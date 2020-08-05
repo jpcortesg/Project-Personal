@@ -27,7 +27,7 @@
 
 ---
 
-<img align="left" alt="Node.js" width="26px" src="https://github-readme-stats.vercel.app/api/pin/?username=jpcortesg&repo=Project-Personal&show_icons=true&width=600"/>
+<img align="left" src="https://github-readme-stats.vercel.app/api/pin/?username=jpcortesg&repo=Project-Personal&show_icons=true"/>
 
 [instagram]: https://www.instagram.com/juan.pablo.cg/
 [facebook]: https://www.facebook.com/juanpablo.cortesgonzalez.52
