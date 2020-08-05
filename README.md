@@ -25,5 +25,9 @@
 <br />
 <br />
 
+---
+
+<img align="left" alt="Node.js" width="26px" src="https://github-readme-stats.vercel.app/api?username=jpcortesg&show_icons=true" />
+
 [instagram]: https://www.instagram.com/juan.pablo.cg/
 [facebook]: https://www.facebook.com/juanpablo.cortesgonzalez.52
