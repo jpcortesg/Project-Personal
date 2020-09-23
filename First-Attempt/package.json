@@ -1,0 +1,24 @@
+{
+  "name": "first-attempt",
+  "version": "1.0.0",
+  "description": "my first personal web with NodeJS",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "jpcortesg"
+  },
+  "keywords": [
+    "barbershop"
+  ],
+  "author": "Juan Pablo Cortes Gonzalez",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
+  }
+}
