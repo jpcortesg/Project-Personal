@@ -4,19 +4,23 @@
   "description": "my first personal web with NodeJS",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "nodemon src/"
   },
   "repository": {
     "type": "git",
-    "url": "jpcortesg"
+    "url": "https://github.com/jpcortesg/Project-Personal"
   },
   "keywords": [
-    "barbershop"
+    "barbershop",
+    "NodeJs",
+    "First Web Personal"
   ],
   "author": "Juan Pablo Cortes Gonzalez",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "path": "^0.12.7",
+    "pug": "^3.0.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.4"
