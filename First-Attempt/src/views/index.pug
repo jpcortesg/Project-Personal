@@ -1,18 +1,12 @@
-html
-  head
-    link(rel="stylesheet", href="./static/main.css")
-    title= title
-  body
-  
-    //- Navbar
-    .menu
-      a.menu-logo(href="#"): img(src="./static/img/icon.png")
-      ul.items
-        li.item: a(href="#") Sign In
-        li.item: a(href="#") Sign In
-      .toggle(onclick='menuToggle()'): .sub: .FB
+extends layout/layout.pug
 
-    //- Section
-    .first-section
-      .colum: a.buttom(href="#") Request your appointment
+block styles
+  link(rel="stylesheet", href="./static/css/index.css")
+
+block content
+  .first-section
+      .colum: a.buttom(href="/signup") Request your appointment
       .colum.two: p Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus necessitatibus illo facilis autem quae incidunt labore adipisci animi consequuntur obcaecati. Commodi quod vero unde sequi id consequatur consequuntur laborum. Aliquam.
+
+block script
+  script(src="./static/js/index.js")

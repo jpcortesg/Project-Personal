@@ -1,6 +1,5 @@
 const express = require('express')
 const app = express()
-const port = 300
 
 // Settings
 app.set('port', process.env.PORT || 300) // Port assignment
@@ -9,6 +8,7 @@ app.set('view engine', 'pug') // Use the 'pug' template engine
 
 // Routes
 app.use(require('./routes'))
+app.use(require('./routes/authentication'))
 
 // Files Statics
 app.use('/static', express.static(__dirname + '/public')) // Where are the public files

@@ -1,0 +1,15 @@
+html
+  head
+    title= title
+    link(rel="stylesheet", href="./static/css/layout.css")
+    block styles
+      
+  body
+  
+    //- Navbar
+    include ../partials/navigation.pug
+
+    block content
+
+    script(src="./static/js/index.js")
+    block script
