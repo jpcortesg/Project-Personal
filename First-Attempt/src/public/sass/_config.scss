@@ -1,0 +1,43 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+$primary-color: #F1ECE9;
+$secondary-color: #333A42;
+$tertiary-color: #A6A5A1;
+$quaternary-color: #485058;
+$blue: #603fd7;
+$red: #D7443F;
+$typography: 'Poppins';
+
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: $typography;
+}
+
+@mixin transition-three-second{
+  transition: all 0.5s ease-in-out;
+}
+
+@mixin transition-five-second{
+  transition: all 0.5s ease-in-out;
+}
+
+@function set-color($color){
+  @if(lightness($color) > 40%){
+    @return $secondary-color;
+  }@else{
+    @return $primary-color;
+  }
+}
+
+@mixin media-ms{
+  @media screen and (max-width: 768px) {
+    @content;
+  }
+}
+
+@mixin media-md{
+  @media screen and (max-width: 1024px) {
+    @content;
+  }
+}

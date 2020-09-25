@@ -1,0 +1,103 @@
+.menu{
+  padding: 0 8rem;
+  height: 4rem;
+  background: set-color($secondary-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  overflow: hidden;
+
+  &_logo{
+
+    & img{
+      height: 3.8rem;
+    }
+  }
+
+  &_items{
+    list-style: none;
+    line-height: 3.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+
+    &_item{
+      display: flex;
+      margin: 0 0.2rem;
+
+      & a{
+        padding: 0 1rem;
+        text-decoration: none;
+        font-size: 1.2rem;
+        color: set-color($primary-color);
+        @include transition-five-second
+      }
+
+      &:hover a{
+        background: $quaternary-color;
+        color: set-color($quaternary-color);
+        border-radius: 1rem;
+      }
+    }
+  }
+
+  &_toggle{
+    width: 4rem;
+    height: 4rem;
+    top: 0;
+    right: 0;
+    margin-right: 2rem;
+    z-index: 1;
+    position: fixed;
+    cursor: pointer;
+    display: none;
+
+    &_sub{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      &_FB{
+        content: '';
+        position: absolute;
+        top: calc(2rem - 0.15rem);
+        width: 2rem;
+        height: 0.25rem;
+        background: set-color($primary-color);
+        @include transition-five-second;
+
+        &::before{
+          content: '';
+          position: absolute;
+          width: 2rem;
+          height: 0.25rem;
+          background: set-color($primary-color);
+          bottom: 0.6rem;
+          @include transition-five-second;
+        }
+
+        &::after{
+          content: '';
+          position: absolute;
+          width: 2rem;
+          height: 0.25rem;
+          background: set-color($primary-color);
+          bottom: -0.6rem;
+          @include transition-five-second;
+        }
+
+        &.active{
+          background: transparent;
+        }
+
+        &.active::before{
+          transform: rotate(225deg) translate(-0.3rem, -0.6rem);
+        }
+
+        &.active::after{
+          transform: rotate(-225deg) translate((-0.3rem, 0.6rem));
+        }
+      }
+    }
+  }
+}
