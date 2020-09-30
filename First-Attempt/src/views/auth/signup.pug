@@ -1,34 +1,37 @@
 extends ../layout/layout.pug
 
 block content
-  .body
-    .container
-      .text Sign Up
+  .sign
+    .sign_container
+      .sign_container_text Sign Up
       form(action="" id="form")
-        .form-row
-          .input-data 
+        .sign_container_row
+          .sign_container_row_input 
             input(type="text" autocomplete="off" name="name" required)
-            .underline.name
+            .sign_container_row_input_underline.name
             label Name
-            p(class="errorInput name") the name must be from 4 to 16 digits and can only have numbers, letters and underscore
-          .input-data
+            p.errorInput.name the name must be from 4 to 16 digits and can only have numbers, letters and underscore
+          .sign_container_row_input
             input(type="text" autocomplete="off" name="userName" required)
-            .underline.userName
+            .sign_container_row_input_underline.userName
             label User Name
-            p(class="errorInput userName") the user must be from 4 to 16 digits and can only have numbers, letters and underscore
-        .form-row
-          .input-data
+            p.errorInput.userName the user must be from 4 to 16 digits and can only have numbers, letters and underscore
+        .sign_container_row
+          .sign_container_row_input
             input(type="password" name="password" required id='firstPass')
-            .underline.password
+            .sign_container_row_input_underline.password
             label password
-            p(class="errorInput password") Password must be 4-12 digits
-          .input-data
+            p.errorInput.password Password must be 4-12 digits
+          .sign_container_row_input
             input(type="password" name="password2" required id='secondPass')
-            .underline.password2
+            .sign_container_row_input_underline.password2
             label confirm password
-            p(class="errorInput password2") Passwords must be the same
-        .form-row.submit-btn
-          .input-data
-            .inner
+            p.errorInput.password2 Passwords must be the same
+        .submit-btn.sign_container_row
+          .sign_container_row_input
+            .sign_container_row_input_inner
               input(type="submit" id='submit' value="submit" disabled)
-          .error-text Badly filled fields
+          .sign_container_row_error Badly filled fields
+
+block script
+  script(src="./static/js/signup.js")

@@ -1,0 +1,153 @@
+*{
+  outline: none;
+}
+
+.sign{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 35rem;
+  background: url(./../img/900.jpg) center;
+  background-size: cover;
+
+  &_container{
+    background: $primary-color;
+    width: 800px;
+    max-width: 800px;
+    padding: 25px 40px 10px 40px;
+    border-radius: 6px;
+    box-shadow: 0 0 10px rgba($secondary-color, $alpha: 0.5);
+
+    &_text{
+      font-size: 35px;
+      font-weight: 600;
+      text-align: center;
+      color: $blue;
+    }
+
+    form{
+      padding: 30px 0;
+    }
+
+    &_row{
+      display: flex;
+      margin: 32px 0;
+
+      &_input{
+
+        width: 100%;
+        margin: 0 20px;
+        position: relative;
+
+        & label{
+          position: absolute;
+          top: 4;
+          font-size: 16px;
+          pointer-events: none;
+          @include transition-three-second;
+        }
+
+        & input{
+          display: block;
+          width: 100%;
+          border: none;
+          font-size: 17px;
+          background: transparent;
+          border-bottom: 2px solid $secondary-color;
+
+          &:focus ~ label,
+          &:valid ~ label{
+            transform: translateY(-20px);
+            color: $blue;
+            font-size: 14px;
+          }
+        }
+
+        &_underline{
+          position: absolute;
+          top: 26px;
+          height: 2px;
+          width: 100%;
+
+          &::before,
+          &::after{
+            position: absolute;
+            content: '';
+            height: 100%;
+            width: 100%;
+            background: $blue;
+            transform: scale(0);
+            transform-origin: center;
+            @include transition-three-second;
+          }
+        }
+
+        & input:focus ~ &_underline::before,
+        & input:focus ~ &_underline::after,
+        & input:valid ~ &_underline::before,
+        & input:valid ~ &_underline::after{
+          transform: scale(1);
+        }
+
+        & input:valid ~ &_underline.active::before,
+        & input:valid ~ &_underline.active::after{
+          background: $red;
+        }
+
+        & .errorInput{
+          display: none;
+
+          &.active{
+            display: block;
+          }
+        }
+
+        .submit-btn &{
+          height: 45px !important;
+          width: 25% !important;
+          border-radius: 6px;
+          overflow: hidden;
+
+          &_inner{
+            height: 100%;
+            width: 300%;
+            position: absolute;
+            background: $blue;
+            left: -100%;
+            @include transition-three-second;
+
+            &:hover{
+              left: 0;
+            }
+          }
+
+          & input{
+            position: relative;
+            z-index: 2;
+            background: none;
+            color: set-color($secondary-color);
+            font-size: 17px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 10px;
+            cursor: pointer;
+            border: 0;
+          }
+        }
+      }
+
+      &_error{
+        text-align: center;
+        background: $red;
+        padding: 10px 0;
+        border-radius: 10px;
+        display: none;
+        
+        &.active{
+          display: block;
+        }
+      }
+    }
+  }
+}

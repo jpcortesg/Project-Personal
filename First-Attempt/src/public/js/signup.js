@@ -1,5 +1,5 @@
-const form = document.getElementById('form')
-const inputs = document.querySelectorAll('#form .form-row .input-data input')
+const form = document.querySelector('#form')
+const inputs = document.querySelectorAll('.sign_container_row_input input')
 
 const fields = {
   name: false,
@@ -32,8 +32,8 @@ const validateForm = (e) => {
 }
 
 const validateInput = (expression, input, field) => {
-  const change = document.querySelector(`.input-data .${field}`)
-  const message = document.querySelector(`.input-data .errorInput.${field}`)
+  const change = document.querySelector(`.sign_container_row_input_underline.${field}`)
+  const message = document.querySelector(`.sign_container_row_input .errorInput.${field}`)
   
   if (input.value === '') {
     message.classList.remove('active')
@@ -52,8 +52,8 @@ const validateInput = (expression, input, field) => {
 const validatePassword = () => {
   const pass1 = document.querySelector('#firstPass')
   const pass2 = document.querySelector('#secondPass')
-  const changePass2 = document.querySelector(`.input-data .password2`)
-  const messagePass2 = document.querySelector('.input-data .errorInput.password2')
+  const changePass2 = document.querySelector(`.sign_container_row_input_underline.password2`)
+  const messagePass2 = document.querySelector('.sign_container_row_input .errorInput.password2')
 
   if (pass1.value !== pass2.value){
     changePass2.classList.add('active')
@@ -67,8 +67,8 @@ const validatePassword = () => {
 }
 
 const enviar = (e) => {
-  const active = document.querySelectorAll('.input-data .errorInput.active')
-  const show = document.querySelector('.error-text')
+  const active = document.querySelectorAll('.sign_container_row .errorInput.active')
+  const show = document.querySelector('.sign_container_row_error')
   const submit = document.querySelector('#submit')
   if(active.length === 0){
     show.classList.remove('active')

@@ -49,4 +49,33 @@
       padding: 0 1rem;
     }
   }
+
+  .sign{
+
+    &_container{
+
+      &_text{
+        font-size: 30px;
+      }
+
+      & form{
+        padding-top: 10px;
+      }
+
+      &_row{
+        display: block;
+
+        &_input{
+          margin: 35px 0 !important;
+        }
+
+        .submit-btn &{
+
+          &_input{
+            width: 40% !important;
+          }
+        }
+      }
+    }
+  }
 }

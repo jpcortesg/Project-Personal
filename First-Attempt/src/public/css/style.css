@@ -114,6 +114,111 @@
       font-weight: 100;
       font-size: 1rem; }
 
+* {
+  outline: none; }
+
+.sign {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 35rem;
+  background: url(./../img/900.jpg) center;
+  background-size: cover; }
+  .sign_container {
+    background: #F1ECE9;
+    width: 800px;
+    max-width: 800px;
+    padding: 25px 40px 10px 40px;
+    border-radius: 6px;
+    box-shadow: 0 0 10px rgba(51, 58, 66, 0.5); }
+    .sign_container_text {
+      font-size: 35px;
+      font-weight: 600;
+      text-align: center;
+      color: #603fd7; }
+    .sign_container form {
+      padding: 30px 0; }
+    .sign_container_row {
+      display: flex;
+      margin: 32px 0; }
+      .sign_container_row_input {
+        width: 100%;
+        margin: 0 20px;
+        position: relative; }
+        .sign_container_row_input label {
+          position: absolute;
+          top: 4;
+          font-size: 16px;
+          pointer-events: none;
+          transition: all 0.5s ease-in-out; }
+        .sign_container_row_input input {
+          display: block;
+          width: 100%;
+          border: none;
+          font-size: 17px;
+          background: transparent;
+          border-bottom: 2px solid #333A42; }
+          .sign_container_row_input input:focus ~ label, .sign_container_row_input input:valid ~ label {
+            transform: translateY(-20px);
+            color: #603fd7;
+            font-size: 14px; }
+        .sign_container_row_input_underline {
+          position: absolute;
+          top: 26px;
+          height: 2px;
+          width: 100%; }
+          .sign_container_row_input_underline::before, .sign_container_row_input_underline::after {
+            position: absolute;
+            content: '';
+            height: 100%;
+            width: 100%;
+            background: #603fd7;
+            transform: scale(0);
+            transform-origin: center;
+            transition: all 0.5s ease-in-out; }
+        .sign_container_row_input input:focus ~ .sign_container_row_input_underline::before, .sign_container_row_input input:focus ~ .sign_container_row_input_underline::after, .sign_container_row_input input:valid ~ .sign_container_row_input_underline::before, .sign_container_row_input input:valid ~ .sign_container_row_input_underline::after {
+          transform: scale(1); }
+        .sign_container_row_input input:valid ~ .sign_container_row_input_underline.active::before, .sign_container_row_input input:valid ~ .sign_container_row_input_underline.active::after {
+          background: #D7443F; }
+        .sign_container_row_input .errorInput {
+          display: none; }
+          .sign_container_row_input .errorInput.active {
+            display: block; }
+        .submit-btn .sign_container_row_input {
+          height: 45px !important;
+          width: 25% !important;
+          border-radius: 6px;
+          overflow: hidden; }
+          .submit-btn .sign_container_row_input_inner {
+            height: 100%;
+            width: 300%;
+            position: absolute;
+            background: #603fd7;
+            left: -100%;
+            transition: all 0.5s ease-in-out; }
+            .submit-btn .sign_container_row_input_inner:hover {
+              left: 0; }
+          .submit-btn .sign_container_row_input input {
+            position: relative;
+            z-index: 2;
+            background: none;
+            color: #F1ECE9;
+            font-size: 17px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 10px;
+            cursor: pointer;
+            border: 0; }
+      .sign_container_row_error {
+        text-align: center;
+        background: #D7443F;
+        padding: 10px 0;
+        border-radius: 10px;
+        display: none; }
+        .sign_container_row_error.active {
+          display: block; }
+
 @media screen and (max-width: 1024px) {
   .menu {
     padding: 0 2rem; } }
@@ -146,6 +251,17 @@
     align-items: center; }
     .index-section_colum {
       width: 100%;
-      padding: 0 1rem; } }
+      padding: 0 1rem; }
+
+  .sign_container_text {
+    font-size: 30px; }
+  .sign_container form {
+    padding-top: 10px; }
+  .sign_container_row {
+    display: block; }
+    .sign_container_row_input {
+      margin: 35px 0 !important; }
+    .submit-btn .sign_container_row_input {
+      width: 40% !important; } }
 
 /*# sourceMappingURL=style.css.map */
