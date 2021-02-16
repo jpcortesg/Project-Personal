@@ -1,0 +1,24 @@
+extends ../layout/layout.pug
+
+block content
+  .sign
+    .sign_container
+      .sign_container_text Sign Up
+      form(action="" id="form")
+        .sign_container_row
+          .sign_container_row_input
+            input(type="text" autocomplete="off" name="userName" required)
+            .sign_container_row_input_underline.userName
+            label User Name
+            p.errorInput.userName the user must be from 4 to 16 digits and can only have numbers, letters and underscore
+        .sign_container_row
+          .sign_container_row_input
+            input(type="password" name="password" required id='firstPass')
+            .sign_container_row_input_underline.password
+            label password
+            p.errorInput.password Password must be 4-12 digits
+        .submit-btn.sign_container_row
+          .sign_container_row_input
+            .sign_container_row_input_inner
+              input(type="submit" id='submit' value="Sign In" disabled)
+          .sign_container_row_error Badly filled fields
