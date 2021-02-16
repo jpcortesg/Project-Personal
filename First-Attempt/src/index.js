@@ -1,10 +1,14 @@
 const express = require('express')
+const morgan = require('morgan')
 const app = express()
 
 // Settings
 app.set('port', process.env.PORT || 300) // Port assignment
 app.set('views', __dirname + '/views') // Where are the views to web, with template engine
 app.set('view engine', 'pug') // Use the 'pug' template engine
+
+// Middlewares
+app.use(morgan('dev'))
 
 // Routes
 app.use(require('./routes'))
