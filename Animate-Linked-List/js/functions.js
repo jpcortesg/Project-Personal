@@ -7,49 +7,49 @@ function checkData(data){ // Check the data entered
 }
 
 function alertJs(text, type){ // Show alert, with text and type
-  alert.classList.add('down', type)
-  alert.innerHTML = text 
-  alert.addEventListener('transitionend', function(){ 
-    alert.classList.remove('down', type)
-    alert.addEventListener('transitionend', function(){ alert.innerHTML = '' })
+  dom.alert.classList.add('down', type)
+  dom.alert.innerHTML = text 
+  dom.alert.addEventListener('transitionend', function(){ 
+    dom.alert.classList.remove('down', type)
+    dom.alert.addEventListener('transitionend', function(){ dom.alert.innerHTML = '' })
   })
 }
 
 function changeTheme(){
-  if(titleIcon.classList.contains('fa-cloud-sun')) changeMode(true) // Change to night
+  if(dom.titleIcon.classList.contains('fa-cloud-sun')) changeMode(true) // Change to night
   else changeMode(false) // Change to day
 }
 
 function deployMenu(){
-  if(menu.classList.contains('deploy')) changeMenu(true) // Collapse the menu
+  if(dom.menu.classList.contains('deploy')) changeMenu(true) // Collapse the menu
   else changeMenu(false) // Deploy the menu
 }
 
 function changeMode(condition){ // Change the color and shape of the components
-  titleIcon.classList.add('shrink')
-  titleIcon.addEventListener('transitionend', function(){ 
-    titleIcon.classList.remove(condition === true ? 'fa-cloud-sun' : 'fa-cloud-moon')
-    titleIcon.classList.add(condition === true ? 'fa-cloud-moon' : 'fa-cloud-sun' )
-    titleIcon.classList.remove('shrink')
+  dom.titleIcon.classList.add('shrink')
+  dom.titleIcon.addEventListener('transitionend', function(){ 
+    dom.titleIcon.classList.remove(condition === true ? 'fa-cloud-sun' : 'fa-cloud-moon')
+    dom.titleIcon.classList.add(condition === true ? 'fa-cloud-moon' : 'fa-cloud-sun' )
+    dom.titleIcon.classList.remove('shrink')
   });
   if (condition === true){
-    body.classList.remove('night')
-    title.classList.remove('night')
-    menu.classList.remove('night')
+    dom.body.classList.remove('night')
+    dom.title.classList.remove('night')
+    dom.menu.classList.remove('night')
     
   }else{
-    body.classList.add('night')
-    title.classList.add('night')
-    menu.classList.add('night')
+    dom.body.classList.add('night')
+    dom.title.classList.add('night')
+    dom.menu.classList.add('night')
   }
 }
 
 function changeMenu(condition){ // Deploy or collapse the menu
-  menuIcon.classList.add('shrink')
-  menuIcon.addEventListener('transitionend', function(){
-    condition === true ? menu.classList.remove('deploy') : menu.classList.add('deploy')
-    menuIcon.classList.remove(condition === true ? 'fa-times' : 'fa-bars')
-    menuIcon.classList.add(condition === true ? 'fa-bars' : 'fa-times')
-    menuIcon.classList.remove('shrink')
+  dom.menuIcon.classList.add('shrink')
+  dom.menuIcon.addEventListener('transitionend', (event) => {
+    condition === true ? dom.menu.classList.remove('deploy') : dom.menu.classList.add('deploy')
+    dom.menuIcon.classList.remove(condition === true ? 'fa-times' : 'fa-bars')
+    dom.menuIcon.classList.add(condition === true ? 'fa-bars' : 'fa-times')
+    dom.menuIcon.classList.remove('shrink')
   })
 }

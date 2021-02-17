@@ -1,24 +1,29 @@
-const menuIcon = document.querySelector('.menu i')
-const menu = document.querySelector('.menu')
-menuIcon.addEventListener('click', deployMenu)
+const dom = {
+  // For changes in the Dom
+  menuIcon : document.querySelector('.menu i'),
+  menu : document.querySelector('.menu'),
+  titleIcon : document.querySelector('.title i'),
+  body : document.querySelector('body'),
+  title : document.querySelector('.title h1'),
 
-const titleIcon = document.querySelector('.title i')
-const body = document.querySelector('body')
-const title = document.querySelector('.title')
-titleIcon.addEventListener('click', changeTheme)
+  // For de program operation
+  addButton : document.querySelector('.add button'),
+  addInput : document.querySelector('.add input'),
+  alert : document.querySelector('.alert'),
+}
+
+dom.menuIcon.addEventListener('click', deployMenu)
+dom.titleIcon.addEventListener('click', changeTheme)
 
 
-const addButton = document.querySelector('.add button')
-const addInput = document.querySelector('.add input')
-const alert = document.querySelector('.alert')
-
-menuIcon.addEventListener('click', deployMenu)
+dom.menuIcon.addEventListener('click', deployMenu)
 
 
 let linkedlist = new LinkedListMy()
 
-addButton.addEventListener('click', function(){
-  linkedlist.insertNextPosition(addInput.value)
+dom.addButton.addEventListener('click', function(event){
+  event.preventDefault()
+  linkedlist.insertNextPosition(dom.addInput.value)
   linkedlist.print()
 })
 
