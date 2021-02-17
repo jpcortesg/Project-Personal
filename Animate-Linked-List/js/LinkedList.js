@@ -5,7 +5,7 @@ function LinkedListMy(){
   // Insert in next position
   this.insertNextPosition = function(data){
     const [message, type] = checkData(data)
-    alertJs(message, type) 
+    alertJs(message, type)
     if(type === 'success'){
       let newNode = new Node(data)
       if (this.head === null){ // If there are no nodes in the list
@@ -17,6 +17,9 @@ function LinkedListMy(){
         }
         actualNode.nextNode = newNode
       }
+      newNode.createView()
+      dom.list.appendChild(newNode.nodeView)
+      toggleClasswithTime(newNode.nodeView, 'pre', 1)
       this.size += 1
     }
   }
@@ -49,13 +52,23 @@ function LinkedListMy(){
       actualNode = actualNode.nextNode
     }
   }
-
 }
 
 // To create news nodes
 function Node(data){
   this.data = data
   this.nextNode = null
+  this.nodeView = null
+
+  // Create the node view for the Dom
+  this.createView = function(){
+    this.nodeView = document.createElement('div')
+    this.nodeView.classList.add('node', 'pre')
+    this.nodeView.innerText = data
+    return this.nodeView
+  }
+  
+  
 
   // node.remove = function (data, previusNode, data){
   //   if (this.data == data){

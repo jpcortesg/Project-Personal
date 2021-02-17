@@ -53,3 +53,9 @@ function changeMenu(condition){ // Deploy or collapse the menu
     dom.menuIcon.classList.remove('shrink')
   })
 }
+
+function toggleClasswithTime(it, clas, time){ // Change the class within of a set Time out
+  setTimeout(function(){
+    it.classList.toggle(clas)
+  }, time)
+}
