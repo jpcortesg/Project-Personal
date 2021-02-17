@@ -17,9 +17,7 @@ function LinkedListMy(){
         }
         actualNode.nextNode = newNode
       }
-      newNode.createView()
-      dom.list.appendChild(newNode.nodeView)
-      toggleClasswithTime(newNode.nodeView, 'pre', 1)
+      showNode(newNode)
       this.size += 1
     }
   }
@@ -52,6 +50,16 @@ function LinkedListMy(){
       actualNode = actualNode.nextNode
     }
   }
+
+  // Show node in DOm
+  function showNode(node){
+    node.createNodedView()
+    dom.list.appendChild(node.nodeView)
+    toggleClasswithTime(node.nodeView, 'pre', 1)
+    node.arrowNodeView()
+    dom.list.appendChild(node.arrowNodeView)
+    toggleClasswithTime(node.arrowNodeView, 'pre', 250)
+  }
 }
 
 // To create news nodes
@@ -59,13 +67,21 @@ function Node(data){
   this.data = data
   this.nextNode = null
   this.nodeView = null
+  this.arrowNode = null
 
   // Create the node view for the Dom
-  this.createView = function(){
+  this.createNodedView = function(){
     this.nodeView = document.createElement('div')
     this.nodeView.classList.add('node', 'pre')
     this.nodeView.innerText = data
     return this.nodeView
+  }
+
+  // Create the next node view for the Dom
+  this.arrowNodeView = function(){
+    this.arrowNodeView = document.createElement('div')
+    this.arrowNodeView.classList.add('arrow', 'pre')
+    return this.arrowNodeView
   }
   
   

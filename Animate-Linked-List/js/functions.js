@@ -36,11 +36,13 @@ function changeMode(condition){ // Change the color and shape of the components
     dom.body.classList.remove('night')
     dom.title.classList.remove('night')
     dom.menu.classList.remove('night')
+    dom.list.classList.remove('night')
     
   }else{
     dom.body.classList.add('night')
     dom.title.classList.add('night')
     dom.menu.classList.add('night')
+    dom.list.classList.add('night')
   }
 }
 

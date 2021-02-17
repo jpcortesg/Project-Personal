@@ -16,14 +16,9 @@ const dom = {
 dom.menuIcon.addEventListener('click', deployMenu)
 dom.titleIcon.addEventListener('click', changeTheme)
 
-
-dom.menuIcon.addEventListener('click', deployMenu)
-
-
 const linkedlist = new LinkedListMy()
 
 dom.addButton.addEventListener('click', function(event){
   event.preventDefault()
   linkedlist.insertNextPosition(dom.addInput.value)
 })
-

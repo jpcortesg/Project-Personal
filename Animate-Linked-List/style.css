@@ -66,6 +66,7 @@ i.shrink{
   left: 1rem;
   width: 2rem;
   height: 2rem;
+  z-index: 3;
 }
 
 .menu.deploy{
@@ -189,6 +190,7 @@ i.shrink{
 }
 
 .list .node{
+  position: relative;
   width: 50px;
   height: 50px;
   margin: 1rem;
@@ -199,7 +201,7 @@ i.shrink{
   background: #0FF;
   border: 1px solid rgb(36, 41, 41);
   border-radius: 50%;
-  transition: all 0.5s ease;
+  transition: all 1s ease;
 }
 
 .node.select{
@@ -214,41 +216,42 @@ i.shrink{
   transform: scale(1.1);
 }
 
-.list .union.pre{
-  background: transparent;
-  transform: translateY(-20px);
+.list .arrow.pre{
+  background: transparent !important;
+  transform: translateY(-5rem);
 }
 
-.list .pre.union::before{
+.list .pre.arrow::before{
   display: none;
 }
 
-.list .union{
+.list .arrow{
   position: relative;
-  width: 25px;
+  width: 30px;
   height: 5px;
   margin-top: calc(22.5px + 1rem);
   background: rgb(36, 41, 41);
+  transform: scale(0.8);
   transition: all 0.5s ease;
 }
 
-.union.select{
+.arrow.select{
   transform: rotate(-10deg);
 }
 
-.list.night .union{
+.list.night .arrow{
   background: #FFF;
 }
 
-.list.night .union::before{
+.list.night .arrow::before{
   border-left-color: #FFF;
 }
   
-.list .union::before{
+.list .arrow::before{
   position: absolute;
   content: '';
   top: -4px;
-  left: 15px;
+  left: 28px;
   width: 0; 
   height: 0; 
   border-left: 20px solid rgb(36, 41, 41);
@@ -257,6 +260,6 @@ i.shrink{
   transition: all 0.5s ease;
 }
 
-.list .union:hover{
+.list .arrow:hover{
   transform: rotate(-10deg);
 }
