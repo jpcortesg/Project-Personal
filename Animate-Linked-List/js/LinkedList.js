@@ -10,14 +10,15 @@ function LinkedListMy(){
       let newNode = new Node(data)
       if (this.head === null){ // If there are no nodes in the list
         this.head = newNode
+        this.head.showNode()
       }else{
         let actualNode = this.head
         while (actualNode.nextNode !== null){ // Find last node
           actualNode = actualNode.nextNode
         }
         actualNode.nextNode = newNode
+        newNode.showNode()
       }
-      showNode(newNode)
       this.size += 1
     }
   }
@@ -50,16 +51,6 @@ function LinkedListMy(){
       actualNode = actualNode.nextNode
     }
   }
-
-  // Show node in DOm
-  function showNode(node){
-    node.createNodedView()
-    dom.list.appendChild(node.nodeView)
-    toggleClasswithTime(node.nodeView, 'pre', 1)
-    node.arrowNodeView()
-    dom.list.appendChild(node.arrowNodeView)
-    toggleClasswithTime(node.arrowNodeView, 'pre', 250)
-  }
 }
 
 // To create news nodes
@@ -68,6 +59,16 @@ function Node(data){
   this.nextNode = null
   this.nodeView = null
   this.arrowNode = null
+
+  // Show node in DOm
+  this.showNode = function(){
+    this.createNodedView()
+    dom.list.appendChild(this.nodeView)
+    toggleClasswithTime(this.nodeView, 'pre', 1)
+    this.arrowNodeView()
+    dom.list.appendChild(this.arrowNodeView)
+    toggleClasswithTime(this.arrowNodeView, 'pre', 250)
+  }
 
   // Create the node view for the Dom
   this.createNodedView = function(){
@@ -83,16 +84,4 @@ function Node(data){
     this.arrowNodeView.classList.add('arrow', 'pre')
     return this.arrowNodeView
   }
-  
-  
-
-  // node.remove = function (data, previusNode, data){
-  //   if (this.data == data){
-  //     previusNode.nextNode = this.nextNode
-  //   }else{
-  //     if(this.nextNode !== null){
-  //       this.nextNode.remove(data, this)
-  //     }
-  //   }
-  // }
 }

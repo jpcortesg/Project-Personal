@@ -186,7 +186,7 @@ i.shrink{
 }
 
 .list .node.pre{
-  transform: scale(0);
+  transform: scale(0) translateX(7rem);
 }
 
 .list .node{
@@ -251,7 +251,7 @@ i.shrink{
   position: absolute;
   content: '';
   top: -4px;
-  left: 28px;
+  left: 24px;
   width: 0; 
   height: 0; 
   border-left: 20px solid rgb(36, 41, 41);
