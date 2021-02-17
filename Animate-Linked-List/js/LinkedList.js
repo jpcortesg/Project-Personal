@@ -1,6 +1,7 @@
 function LinkedListMy(){
   this.head = null
   this.size = 0
+  this.list
 
   // Insert in next position
   this.insertNextPosition = function(data){
@@ -21,6 +22,7 @@ function LinkedListMy(){
       }
       this.size += 1
     }
+    dom.addInput.value = ''
   }
 
   // Insert in some index
@@ -41,6 +43,15 @@ function LinkedListMy(){
       actualNode.nextNode = newNode
       }
     this.size += 1
+  }
+
+  // Create list view
+  this.viewList = function(){
+    this.nodeView = document.createElement('div')
+    this.nodeView.classList.add('list')
+    dom.body.appendChild(this.nodeView)
+    dom.list = this.nodeView
+    console.log(dom.list);
   }
 
   // Show in log
