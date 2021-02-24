@@ -11,23 +11,23 @@ function LinkedListMy(){
       let newNode = new Node(data)
       if (this.head === null){ // If there are no nodes in the list
         this.head = newNode
-        this.head.showNode()
+        this.head.showNode(this.size)
       }else{
         let actualNode = this.head
         while (actualNode.nextNode !== null){ // Find last node
           actualNode = actualNode.nextNode
         }
         actualNode.nextNode = newNode
-        newNode.showNode()
+        newNode.showNode(this.size)
       }
-      this.size += 1
+      this.size += 2
     }
     dom.addInput.value = ''
   }
 
   // Insert in some index
   this.insertSomeIndex = function(index, data){
-    if(parseInt(index) > this.size) alertJs('Index out of range', 'danger')
+    if(parseInt(index)*2 > this.size) alertJs('Index out of range', 'danger')
     else{
       const [message, type] = checkData([index, data])
       alertJs(message, type)
@@ -36,6 +36,7 @@ function LinkedListMy(){
         if(parseInt(index) === 0){
           newNode.nextNode = this.head
           this.head = newNode
+          this.head.showNode(parseInt(index))
         }else{
           cont = 1
           let actualNode = this.head
@@ -46,18 +47,21 @@ function LinkedListMy(){
           let help = actualNode
           newNode.nextNode = help.nextNode
           actualNode.nextNode = newNode
+
+          actualNode.nextNode = newNode
+          newNode.showNode(index*2)
         }
-        this.size += 1 
+        this.size += 2
       }
     }
   }
 
   // Create list view
   this.viewList = function(){
-    this.nodeView = document.createElement('div')
-    this.nodeView.classList.add('list')
-    dom.body.appendChild(this.nodeView)
-    dom.list = this.nodeView
+    this.list = document.createElement('div')
+    this.list.classList.add('list')
+    dom.body.appendChild(this.list)
+    dom.list = this.list
   }
 
   // Show in log
@@ -78,13 +82,13 @@ function Node(data){
   this.arrowNode = null
 
   // Show node in DOm
-  this.showNode = function(){
+  this.showNode = function(position){
     this.createNodedView()
-    dom.list.appendChild(this.nodeView)
-    toggleClasswithTime(this.nodeView, 'pre', 1)
     this.arrowNodeView()
-    dom.list.appendChild(this.arrowNodeView)
-    toggleClasswithTime(this.arrowNodeView, 'pre', 250)
+    dom.list.insertBefore(this.arrowNode, dom.list.childNodes[position])
+    dom.list.insertBefore(this.nodeView, dom.list.childNodes[position])
+    toggleClasswithTime(this.nodeView, 'pre', 100)
+    toggleClasswithTime(this.arrowNode, 'pre', 250)
   }
 
   // Create the node view for the Dom
@@ -97,8 +101,8 @@ function Node(data){
 
   // Create the arrow for the next node view for the Dom
   this.arrowNodeView = function(){
-    this.arrowNodeView = document.createElement('div')
-    this.arrowNodeView.classList.add('arrow', 'pre')
-    return this.arrowNodeView
+    this.arrowNode = document.createElement('div')
+    this.arrowNode.classList.add('arrow', 'pre')
+    return this.arrowNode
   }
 }
