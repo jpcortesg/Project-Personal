@@ -4,56 +4,68 @@ function LinkedListMy(){
   this.list
 
   // Insert in next position
-  this.insertNextPosition = function(data){
+  this.insertNextPosition = async function(data){
+    dom.addInput.value = ''
+    dom.addButton.disabled = true
     const [message, type] = checkData(data)
-    alertJs(message, type)
-    if(type === 'success'){
+    if(type === 'danger') alertJs(message, type)
+    else {
       let newNode = new Node(data)
       if (this.head === null){ // If there are no nodes in the list
         this.head = newNode
         this.head.showNode(this.size)
+        alertJs(message, type)
       }else{
-        let actualNode = this.head
+        let actualNode = this.head 
+        await animateNodes(actualNode)  
         while (actualNode.nextNode !== null){ // Find last node
           actualNode = actualNode.nextNode
+          await animateNodes(actualNode)
         }
         actualNode.nextNode = newNode
         newNode.showNode(this.size)
+        alertJs(message, type)
       }
       this.size += 2
     }
-    dom.addInput.value = ''
+    dom.addButton.disabled = false
   }
 
   // Insert in some index
-  this.insertSomeIndex = function(index, data){
+  this.insertSomeIndex = async function(index, data){
+    index.value = ''
+    data.value = ''
+    dom.insertButton.disabled = true
     if(parseInt(index)*2 > this.size) alertJs('Index out of range', 'danger')
     else{
       const [message, type] = checkData([index, data])
-      alertJs(message, type)
-      if (type === 'success') {
+      if(type === 'danger') alertJs(message, type)
+      else{
         let newNode = new Node(data)
         if(parseInt(index) === 0){
           newNode.nextNode = this.head
           this.head = newNode
           this.head.showNode(parseInt(index))
+          alertJs(message, type)
         }else{
           cont = 1
           let actualNode = this.head
+          await animateNodes(actualNode)
           while (cont < index){
             cont += 1
             actualNode = actualNode.nextNode
+            await animateNodes(actualNode)
           }
           let help = actualNode
           newNode.nextNode = help.nextNode
           actualNode.nextNode = newNode
-
-          actualNode.nextNode = newNode
           newNode.showNode(index*2)
+          alertJs(message, type)
         }
         this.size += 2
       }
     }
+    dom.insertButton.disabled = false
   }
 
   // Create list view

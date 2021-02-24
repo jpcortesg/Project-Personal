@@ -74,3 +74,15 @@ function toggleClasswithTime(it, clas, time){ // Change the class within of a se
     it.classList.toggle(clas)
   }, time)
 }
+
+function animateNodes(node){ // Makes node animation possible
+  return new Promise(resolve => {
+    toggleClasswithTime(node.nodeView, 'select', 10)
+    toggleClasswithTime(node.arrowNode, 'select', 250)
+    setTimeout(() => {
+      toggleClasswithTime(node.nodeView, 'select', 10)
+      toggleClasswithTime(node.arrowNode, 'select', 250)
+      resolve()
+    }, 500)
+  })
+}
