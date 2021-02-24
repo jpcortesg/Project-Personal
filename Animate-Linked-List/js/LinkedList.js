@@ -26,23 +26,30 @@ function LinkedListMy(){
   }
 
   // Insert in some index
-  this.insertSomeIndex = function(data, index){
-    const newNode = new Node(data)
-    if(index === 0){
-      newNode.nextNode = this.head
-      this.head = newNode
-    }else{
-      cont = 1
-      let actualNode = this.head
-      while (cont < index){
-        cont += 1
-        actualNode = actualNode.nextNode
+  this.insertSomeIndex = function(index, data){
+    if(parseInt(index) > this.size) alertJs('Index out of range', 'danger')
+    else{
+      const [message, type] = checkData([index, data])
+      alertJs(message, type)
+      if (type === 'success') {
+        let newNode = new Node(data)
+        if(parseInt(index) === 0){
+          newNode.nextNode = this.head
+          this.head = newNode
+        }else{
+          cont = 1
+          let actualNode = this.head
+          while (cont < index){
+            cont += 1
+            actualNode = actualNode.nextNode
+          }
+          let help = actualNode
+          newNode.nextNode = help.nextNode
+          actualNode.nextNode = newNode
+        }
+        this.size += 1 
       }
-      let help = actualNode
-      newNode.nextNode = help.nextNode
-      actualNode.nextNode = newNode
-      }
-    this.size += 1
+    }
   }
 
   // Create list view
@@ -51,7 +58,6 @@ function LinkedListMy(){
     this.nodeView.classList.add('list')
     dom.body.appendChild(this.nodeView)
     dom.list = this.nodeView
-    console.log(dom.list);
   }
 
   // Show in log
@@ -64,7 +70,7 @@ function LinkedListMy(){
   }
 }
 
-// To create news nodes
+// Class node
 function Node(data){
   this.data = data
   this.nextNode = null
@@ -89,7 +95,7 @@ function Node(data){
     return this.nodeView
   }
 
-  // Create the next node view for the Dom
+  // Create the arrow for the next node view for the Dom
   this.arrowNodeView = function(){
     this.arrowNodeView = document.createElement('div')
     this.arrowNodeView.classList.add('arrow', 'pre')

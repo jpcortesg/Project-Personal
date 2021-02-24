@@ -1,7 +1,20 @@
 function checkData(data){ // Check the data entered
+  if(Array.isArray(data)){
+    let indexAns = checkData(data[0])
+    let dataAns = checkData(data[1])
+    if (indexAns[1] === 'danger' && dataAns[1] === 'danger'){
+      if (indexAns[0] !== dataAns[0]){
+        let message = indexAns[0] + ' and ' + dataAns[0]
+        return [message, 'danger']
+      }
+      return indexAns
+    }
+    else if(indexAns[1] === 'danger') return indexAns
+    else if (dataAns[1] === 'danger') return dataAns
+    return ['Data added success fully', 'success']
+  }
   if(data === '') return['No data', 'danger']
-  let isPossible = isNaN(data)
-  if (isPossible) return['The data must be a number', 'danger']
+  if (isNaN(data)) return['The data must be a number', 'danger']
   if(parseInt(data) < 0) return['The data must be positive', 'danger']
   return ['Data added success fully', 'success']
 }
