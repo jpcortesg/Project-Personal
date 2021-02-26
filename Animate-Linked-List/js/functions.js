@@ -1,4 +1,5 @@
-function checkData(data){ // Check the data entered
+// Check the data entered
+function checkData(data){ 
   if(Array.isArray(data)){
     let indexAns = checkData(data[0])
     let dataAns = checkData(data[1])
@@ -19,7 +20,8 @@ function checkData(data){ // Check the data entered
   return ['Data added success fully', 'success']
 }
 
-function alertJs(text, type){ // Show alert, with text and type
+// Show alert, with text and type
+function alertJs(text, type){ 
   dom.alert.classList.add('down', type)
   dom.alert.innerHTML = text 
   dom.alert.addEventListener('transitionend', function(){ 
@@ -29,16 +31,17 @@ function alertJs(text, type){ // Show alert, with text and type
 }
 
 function changeTheme(){
-  if(dom.titleIcon.classList.contains('fa-cloud-sun')) changeMode(true) // Change to night
-  else changeMode(false) // Change to day
+  if(dom.titleIcon.classList.contains('fa-cloud-sun')) changeMode(true) 
+  else changeMode(false) 
 }
 
 function deployMenu(){
-  if(dom.menu.classList.contains('deploy')) changeMenu(true) // Collapse the menu
-  else changeMenu(false) // Deploy the menu
+  if(dom.menu.classList.contains('deploy')) changeMenu(true) 
+  else changeMenu(false) 
 }
 
-function changeMode(condition){ // Change the color and shape of the components
+// Change the color and shape of the components
+function changeMode(condition){ 
   dom.titleIcon.classList.add('shrink')
   dom.titleIcon.addEventListener('transitionend', function(){ 
     dom.titleIcon.classList.remove(condition === true ? 'fa-cloud-sun' : 'fa-cloud-moon')
@@ -59,7 +62,8 @@ function changeMode(condition){ // Change the color and shape of the components
   }
 }
 
-function changeMenu(condition){ // Deploy or collapse the menu
+// Deploy or collapse the menu
+function changeMenu(condition){
   dom.menuIcon.classList.add('shrink')
   dom.menuIcon.addEventListener('transitionend', (event) => {
     condition === true ? dom.menu.classList.remove('deploy') : dom.menu.classList.add('deploy')
@@ -69,20 +73,65 @@ function changeMenu(condition){ // Deploy or collapse the menu
   })
 }
 
-function toggleClasswithTime(it, clas, time){ // Change the class within of a set Time out
+// Change the class within of a set Time out
+function toggleClasswithTime(it, clas, time){
   setTimeout(function(){
     it.classList.toggle(clas)
   }, time)
 }
 
-function animateNodes(node){ // Makes node animation possible
+// Change the class within of a set Time out, but with promise
+function toggleClasswithTime2(it, clas, time){
   return new Promise(resolve => {
-    toggleClasswithTime(node.nodeView, 'select', 10)
-    toggleClasswithTime(node.arrowNode, 'select', 250)
     setTimeout(() => {
-      toggleClasswithTime(node.nodeView, 'select', 10)
-      toggleClasswithTime(node.arrowNode, 'select', 250)
+      it.classList.toggle(clas)
       resolve()
-    }, 500)
+    }, time)
   })
+}
+
+// Makes node animation possible
+async function animateNodes(node){
+  await toggleClasswithTime2(node.nodeView, 'select', 10)
+  await toggleClasswithTime2(node.arrowNode, 'select', 250)
+  await toggleClasswithTime2(node.nodeView, 'select', 10)
+  await toggleClasswithTime2(node.arrowNode, 'select', 250)
+}
+
+// Call the function "insertNextPosition"
+function callInsertNextPosition(){
+  let data = dom.addInput.value
+  dom.addInput.value = ''
+  dom.addButton.disabled = true
+  const [message, type] = checkData(data)
+  if(type === 'danger'){
+    alertJs(message, type)
+  }
+  else{
+    linkedlist.insertNextPosition(data)
+    alertJs(message, type)
+  }
+  dom.addButton.disabled = false
+}
+
+
+// Call function InsertSomeIndex
+function callInsertSomeIndex(){
+  let index = dom.insertInput[0].value
+  let data = dom.insertInput[1].value
+  dom.insertButton.disabled = true
+  index.value = ''
+  data.value = ''
+  if(parseInt(index)*2 > this.size){
+    alertJs('Index out of range', 'danger')
+  }else{
+    const [message, type] = checkData([index, data])
+    if(type === 'danger'){
+      alertJs(message, type)
+    }else{
+      linkedlist.insertSomeIndex(index, data)
+      alertJs(message, type)
+    }
+  }
+  dom.insertButton.disabled = false
 }

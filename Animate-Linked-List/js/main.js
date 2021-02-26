@@ -29,10 +29,11 @@ linkedlist.viewList()
 // Add a node in the end of the list
 dom.addButton.addEventListener('click', function(event){
   event.preventDefault()
-  linkedlist.insertNextPosition(dom.addInput.value)
+  callInsertNextPosition()
 })
 
+// Inser node in some position
 dom.insertButton.addEventListener('click', function(event){
   event.preventDefault()
-  linkedlist.insertSomeIndex(dom.insertInput[0].value, dom.insertInput[1].value)
+  callInsertSomeIndex()
 })
