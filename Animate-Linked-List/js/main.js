@@ -16,6 +16,7 @@ const dom = {
 
   // For alerts
   alert : document.querySelector('.alert'),
+  sizeList: 0
 }
 
 // Call functions for change styles

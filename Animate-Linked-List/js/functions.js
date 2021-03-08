@@ -93,13 +93,13 @@ function toggleClasswithTime2(it, clas, time){
 // Makes node animation possible
 async function animateNodes(node){
   await toggleClasswithTime2(node.nodeView, 'select', 10)
-  await toggleClasswithTime2(node.arrowNode, 'select', 250)
+  await toggleClasswithTime2(node.arrowNode, 'select', 500)
   await toggleClasswithTime2(node.nodeView, 'select', 10)
-  await toggleClasswithTime2(node.arrowNode, 'select', 250)
+  await toggleClasswithTime2(node.arrowNode, 'select', 500)
 }
 
 // Call the function "insertNextPosition"
-function callInsertNextPosition(){
+async function callInsertNextPosition(){
   let data = dom.addInput.value
   dom.addInput.value = ''
   dom.addButton.disabled = true
@@ -108,7 +108,7 @@ function callInsertNextPosition(){
     alertJs(message, type)
   }
   else{
-    linkedlist.insertNextPosition(data)
+    await linkedlist.insertNextPosition(data)
     alertJs(message, type)
   }
   dom.addButton.disabled = false
@@ -116,20 +116,20 @@ function callInsertNextPosition(){
 
 
 // Call function InsertSomeIndex
-function callInsertSomeIndex(){
+async function callInsertSomeIndex(){
   let index = dom.insertInput[0].value
   let data = dom.insertInput[1].value
   dom.insertButton.disabled = true
-  index.value = ''
-  data.value = ''
-  if(parseInt(index)*2 > this.size){
+  dom.insertInput[0].value = ''
+  dom.insertInput[1].value = ''
+  if(parseInt(index)*2 > dom.sizeList){
     alertJs('Index out of range', 'danger')
   }else{
     const [message, type] = checkData([index, data])
     if(type === 'danger'){
       alertJs(message, type)
     }else{
-      linkedlist.insertSomeIndex(index, data)
+      await linkedlist.insertSomeIndex(index, data)
       alertJs(message, type)
     }
   }

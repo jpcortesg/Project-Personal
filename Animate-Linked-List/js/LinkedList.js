@@ -1,14 +1,13 @@
 function LinkedListMy(){
   this.head = null
-  this.size = 0
-  this.list
+  this.list = null
 
   // Insert in next position
   this.insertNextPosition = async function(data){
     let newNode = new Node(data)
     if (this.head === null){
       this.head = newNode
-      this.head.showNode(this.size)
+      this.head.showNode(dom.sizeList)
     }else{
       let actualNode = this.head 
       await animateNodes(actualNode)  
@@ -17,9 +16,9 @@ function LinkedListMy(){
         await animateNodes(actualNode)
       }
       actualNode.nextNode = newNode
-      newNode.showNode(this.size)
+      newNode.showNode(dom.sizeList)
     }
-    this.size += 2
+    dom.sizeList += 2
   }
 
   // Insert in some index
@@ -43,7 +42,7 @@ function LinkedListMy(){
       actualNode.nextNode = newNode
       newNode.showNode(index*2)
     }
-    this.size += 2
+    dom.sizeList += 2
   }
 
   // Create list view
@@ -52,6 +51,7 @@ function LinkedListMy(){
     this.list.classList.add('list')
     dom.body.appendChild(this.list)
     dom.list = this.list
+    dom.sizeList = dom.sizeList
   }
 
   // Show in log
@@ -77,7 +77,7 @@ function Node(data){
     this.arrowNodeView()
     dom.list.insertBefore(this.arrowNode, dom.list.childNodes[position])
     dom.list.insertBefore(this.nodeView, dom.list.childNodes[position])
-    await toggleClasswithTime2(this.nodeView, 'pre', 100)
+    await toggleClasswithTime2(this.nodeView, 'pre', 250)
     await toggleClasswithTime2(this.arrowNode, 'pre', 500)
   }
 
@@ -85,14 +85,12 @@ function Node(data){
   this.createNodedView = function(){
     this.nodeView = document.createElement('div')
     this.nodeView.classList.add('node', 'pre')
-    this.nodeView.innerText = data
-    return this.nodeView
+    this.nodeView.innerText = this.data
   }
 
   // Create the arrow for the next node view for the Dom
   this.arrowNodeView = function(){
     this.arrowNode = document.createElement('div')
     this.arrowNode.classList.add('arrow', 'pre')
-    return this.arrowNode
   }
 }

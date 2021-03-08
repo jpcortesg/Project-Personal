@@ -161,7 +161,7 @@ i.shrink{
   pointer-events: none;
   margin-left: 25%;
   border-radius: 2rem;
-  transition: all 1s ease;
+  transition: all 0.5s ease;
 }
 
 .alert.down{
@@ -186,7 +186,11 @@ i.shrink{
 }
 
 .list .node.pre{
-  transform: scale(0) translateX(7rem);
+  max-width: 0 !important;
+  overflow: hidden !important;
+  transform: scale(0);
+  margin: 0;
+  transition: all 0.5s ease;
 }
 
 .list .node{
@@ -194,18 +198,18 @@ i.shrink{
   width: 50px;
   height: 50px;
   margin: 1rem;
-  padding: 1rem;
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: visible;
   background: #0FF;
   border: 1px solid rgb(36, 41, 41);
   border-radius: 50%;
-  transition: all 1s ease;
+  transition: all 0.5s ease;
 }
 
 .node.select{
-  transform: scale(1.4);
+  transform: scale(1.1);
 }
 
 .list.night .node{
@@ -217,11 +221,17 @@ i.shrink{
 }
 
 .list .arrow.pre{
+  max-width: 0 !important;
+  overflow: hidden !important;
   background: transparent !important;
+  transform: scale(0);
   transform: translateY(-5rem);
 }
 
 .list .pre.arrow::before{
+  max-width: 0 !important;
+  overflow: hidden !important;
+  border: none;
   display: none;
 }
 
@@ -231,12 +241,13 @@ i.shrink{
   height: 5px;
   margin-top: calc(22.5px + 1rem);
   background: rgb(36, 41, 41);
+  overflow: visible;
   transform: scale(0.8);
   transition: all 0.5s ease;
 }
 
 .arrow.select{
-  transform: rotate(-10deg);
+  transform: rotate(-10deg) scale(0.9);
 }
 
 .list.night .arrow{
