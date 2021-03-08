@@ -188,8 +188,8 @@ i.shrink{
 .list .node.pre{
   max-width: 0 !important;
   overflow: hidden !important;
-  transform: scale(0);
-  margin: 0;
+  transform: scale(0) !important;
+  margin: 0 !important;
   transition: all 0.5s ease;
 }
 
@@ -212,6 +212,10 @@ i.shrink{
   transform: scale(1.1);
 }
 
+.node.set{
+  transform: translateY(-2rem) scale(1.15);
+}
+
 .list.night .node{
   border: 1px solid #FFF;
 }
@@ -224,15 +228,16 @@ i.shrink{
   max-width: 0 !important;
   overflow: hidden !important;
   background: transparent !important;
-  transform: scale(0);
-  transform: translateY(-5rem);
+  transform: scale(0) !important;
+  transform: translateY(-5rem) !important;
 }
 
 .list .pre.arrow::before{
   max-width: 0 !important;
   overflow: hidden !important;
-  border: none;
-  display: none;
+  border: none !important;
+  display: none !important;
+  transform: scale(0) !important;
 }
 
 .list .arrow{

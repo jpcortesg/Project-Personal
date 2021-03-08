@@ -45,6 +45,23 @@ function LinkedListMy(){
     dom.sizeList += 2
   }
 
+  // Set in some index
+  this.setSomeIndex = async function(index, data){
+    if(parseInt(index) === 0){
+      await animationSetData(this.head, data)
+    }else{
+      cont = 1
+      let actualNode = this.head
+      await animateNodes((actualNode))
+      while (cont < index){
+        cont += 1
+        actualNode = actualNode.nextNode
+        await animateNodes(actualNode)
+      }
+      await animationSetData(actualNode.nextNode, data)
+    }
+  }
+
   // Create list view
   this.viewList = function(){
     this.list = document.createElement('div')

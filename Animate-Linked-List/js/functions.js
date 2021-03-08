@@ -117,11 +117,7 @@ async function callInsertNextPosition(){
 
 // Call function InsertSomeIndex
 async function callInsertSomeIndex(){
-  let index = dom.insertInput[0].value
-  let data = dom.insertInput[1].value
-  dom.insertButton.disabled = true
-  dom.insertInput[0].value = ''
-  dom.insertInput[1].value = ''
+  const [index, data] = someIndex(dom.insertInput, dom.insertButton)
   if(parseInt(index)*2 > dom.sizeList){
     alertJs('Index out of range', 'danger')
   }else{
@@ -134,4 +130,42 @@ async function callInsertSomeIndex(){
     }
   }
   dom.insertButton.disabled = false
+}
+
+// Call function insertSomeIndex
+ async function callSetSomeIndex(){
+  const [index, data] = someIndex(dom.setInput, dom.setButton)
+  if(parseInt(index)*2 > dom.sizeList-2){
+    alertJs('Index out of range', 'danger')
+  }else{
+    const [message, type] = checkData([index, data])
+    if(type === 'danger'){
+      alertJs(message, type)
+    }else{
+      await linkedlist.setSomeIndex(index, data)
+      alertJs(`Change in the index ${index}`, type)
+    }
+  }
+  dom.setButton.disabled = false
+}
+
+// Return index and data velues to function with some position
+function someIndex(type, button){
+  let index = type[0].value
+  let data = type[1].value
+  button.disabled = true
+  type[0].value = ''
+  type[1].value = ''
+  return [index, data]
+}
+
+// Animate node for set data
+async function animationSetData(node, data){
+  actualNode = node
+  await toggleClasswithTime2(actualNode.nodeView, 'set', 10)
+  actualNode.data = data
+  setTimeout(function(){
+    actualNode.nodeView.innerText = data
+  }, 400)
+  await toggleClasswithTime2(actualNode.nodeView, 'set', 500)
 }

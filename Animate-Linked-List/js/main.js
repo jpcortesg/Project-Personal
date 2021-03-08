@@ -14,6 +14,10 @@ const dom = {
   insertButton : document.querySelector('.insert button'),
   insertInput : document.querySelectorAll('.insert input'),
 
+  // To set node
+  setButton : document.querySelector('.set button'),
+  setInput : document.querySelectorAll('.set input'),
+
   // For alerts
   alert : document.querySelector('.alert'),
   sizeList: 0
@@ -37,4 +41,10 @@ dom.addButton.addEventListener('click', function(event){
 dom.insertButton.addEventListener('click', function(event){
   event.preventDefault()
   callInsertSomeIndex()
+})
+
+// Set data node in some position
+dom.setButton.addEventListener('click', function(event){
+  event.preventDefault()
+  callSetSomeIndex()
 })
