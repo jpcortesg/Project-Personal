@@ -216,6 +216,10 @@ i.shrink{
   transform: translateY(-2rem) scale(1.15);
 }
 
+.node.remove{
+  transform: scale(0);
+}
+
 .list.night .node{
   border: 1px solid #FFF;
 }
@@ -253,6 +257,10 @@ i.shrink{
 
 .arrow.select{
   transform: rotate(-10deg) scale(0.9);
+}
+
+.arrow.remove{
+  transform: translateY(2rem) scale(0.05);
 }
 
 .list.night .arrow{

@@ -18,6 +18,10 @@ const dom = {
   setButton : document.querySelector('.set button'),
   setInput : document.querySelectorAll('.set input'),
 
+  // To remove node
+  removeButton : document.querySelector('.remove button'),
+  removeInput : document.querySelector('.remove input'),
+
   // For alerts
   alert : document.querySelector('.alert'),
   sizeList: 0
@@ -47,4 +51,10 @@ dom.insertButton.addEventListener('click', function(event){
 dom.setButton.addEventListener('click', function(event){
   event.preventDefault()
   callSetSomeIndex()
+})
+
+// Remove node with index
+dom.removeButton.addEventListener('click', function(event){
+  event.preventDefault()
+  callRemoveNode()
 })

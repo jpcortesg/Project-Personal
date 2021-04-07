@@ -62,6 +62,36 @@ function LinkedListMy(){
     }
   }
 
+  // Remove with some index
+  this.removeNode = async function(index){
+    if(parseInt(index) === 0){
+      const nodeDelete = this.head
+      if(dom.sizeList > 2){
+        this.head = nodeDelete.nextNode
+      }else{
+        this.head = null
+      }
+      await removeNode(nodeDelete)
+    }else{
+      cont = 1
+      let actualNode = this.head
+      await animateNodes(actualNode)
+      while (cont < index) {
+        cont += 1
+        actualNode = actualNode.nextNode
+        await animateNodes(actualNode)
+      }
+      const deleteNode = actualNode.nextNode
+      if(index < dom.sizeList){
+        actualNode.nextNode = deleteNode.nextNode
+      }else{
+        beforeNode.nextNode = null
+      }
+      await removeNode(deleteNode)
+    }
+    dom.sizeList -= 2
+  }
+
   // Create list view
   this.viewList = function(){
     this.list = document.createElement('div')

@@ -149,6 +149,25 @@ async function callInsertSomeIndex(){
   dom.setButton.disabled = false
 }
 
+// Call function removeNode
+async function callRemoveNode(){
+  const removeIndex = dom.removeInput.value
+  dom.removeInput.value = ''
+  dom.removeButton.disabled = true
+  if(parseInt(removeIndex)*2 > dom.sizeList-2){
+    alertJs('Index out of range', 'danger')
+  }else{
+    const [message, type] = checkData(removeIndex)
+    if(type === 'danger'){
+      alertJs(message, type)
+    }else{
+      await linkedlist.removeNode(removeIndex)
+      alertJs(`Remove node in the index ${removeIndex}`, 'success')
+    }
+  }
+  dom.removeButton.disabled = false
+}
+
 // Return index and data velues to function with some position
 function someIndex(type, button){
   let index = type[0].value
@@ -168,4 +187,18 @@ async function animationSetData(node, data){
     actualNode.nodeView.innerText = data
   }, 400)
   await toggleClasswithTime2(actualNode.nodeView, 'set', 500)
+}
+
+// Remove node
+async function removeNode(node){
+  await animactionRemoveNode(node)
+  node.nodeView.remove()
+  node.arrowNode.remove()
+}
+
+// Animate node for remove node
+async function animactionRemoveNode(node){
+  await toggleClasswithTime2(node.nodeView, 'remove', 10) 
+  await toggleClasswithTime2(node.arrowNode, 'remove', 10)   
+  await toggleClasswithTime2(node.nodeView, 'remove', 500)
 }
